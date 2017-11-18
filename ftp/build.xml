@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+
+<project name="ftp" default="runServer" basedir=".">
+
+	<property name="sources" value="src"/>
+	<property name="classes" value="classes"/>
+	<property name="build" value="build"/>
+	<property name="mainpath" value="ftp"/>
+	<property name="doc" value="docs"/>
+	<property name="serverMainclass" value="ftp.server.FTPServer"/>
+	<property name="clientMainclass" value="ftp.client.FTPClient"/>
+	<property name="tarname" value="ftp.tar"/>
+
+	<target name="clean">
+		<delete dir="${classes}"/>
+		<delete dir="${doc}"/>
+		<delete file="${jarname}"/>
+	</target>
+
+	<target name="initialization">
+		<mkdir dir="${classes}"/>
+	</target>
+
+	<target name="compile" depends="clean, initialization">
+		<javac srcdir="${sources}" destdir="${classes}" classpath="${classes}"/>
+	</target>
+
+	<target name="runServer" depends="compile">
+		<java classname="${serverMainclass}" classpath="${classes}" fork="true"/>
+	</target>
+
+	<target name="runClient" depends="compile">
+		<java classname="${clientMainclass}" classpath="${classes}" fork="true"/>
+	</target>
+
+
+	<target name="doc">
+		<mkdir dir="${doc}"/>
+		<javadoc encoding="ISO8859-1" sourcepath="${sources}" classpath="${classes}" destdir="${doc}" author="true" packagenames="${mainpath}.*"/>
+	</target>
+	
+	<target name="tar">
+		<tar destfile="${tarname}">
+			<fileset dir="." />
+		</tar>
+	</target>
+	
+</project>

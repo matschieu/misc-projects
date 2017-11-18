@@ -1,0 +1,19 @@
+#!/bin/bash
+
+REDCOLOR="\033[01;31m"
+BLUECOLOR="\033[01;34m"
+YELLOWCOLOR="\033[01;33m"
+DEFAULTCOLOR="\033[00;49m"
+
+CLASSPATH="./classes"
+echo -e $BLUECOLOR"\nTemps d'execution : "$
+time java -cp $CLASSPATH MSysLin 2>error
+
+if test $? -eq 0 ; then
+	echo -e ""$DEFAULTCOLOR
+else
+	echo -e $REDCOLOR"\nErreur d'execution :\n"
+	cat error;
+	echo -e ""$DEFAULTCOLOR
+fi
+rm error

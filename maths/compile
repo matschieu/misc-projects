@@ -1,0 +1,25 @@
+#!/bin/bash
+
+REDCOLOR="\033[01;31m"
+BLUECOLOR="\033[01;34m"
+YELLOWCOLOR="\033[01;33m"
+DEFAULTCOLOR="\033[00;49m"
+
+SOURCEPATH="."
+CLASSPATH="classes"
+
+echo -e $BLUECOLOR"\nTemps de compilation : "
+time javac -encoding UTF8 -d $CLASSPATH -sourcepath $SOURCEPATH -classpath $CLASSPATH src/*.java 2>error
+
+#SOURCEPATH="./src/"
+#CLASSPATH="./classes"
+#time javac -encoding UTF8 -d $CLASSPATH -sourcepath $SOURCEPATH -classpath $CLASSPATH `find $SOURCEPATH -name "*.java"`
+
+if test $? -eq 0 ; then
+	echo -e $YELLOWCOLOR"\nCompilation terminee\n"$DEFAULTCOLOR
+else
+	echo -e $REDCOLOR"\nErreur de compilation :\n"
+	cat error;
+	echo -e ""$DEFAULTCOLOR
+fi
+rm error
