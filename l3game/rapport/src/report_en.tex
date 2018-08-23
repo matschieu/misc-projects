@@ -1,0 +1,87 @@
+
+\documentclass[a4paper,6pt]{article}
+
+% PACKAGES --------------------------------------
+
+\usepackage[english]{babel}
+%\usepackage[francais]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{url}
+
+\usepackage{graphicx}
+
+% MISE EN PAGE ---------------------------------
+
+\addtolength{\hoffset}{-2cm}
+\addtolength{\textwidth}{3,60cm}
+\addtolength{\voffset}{-3cm}
+\addtolength{\textheight}{4cm}
+
+% TITRE ET TABLE DES MATIERE -------------------
+
+\begin{document}
+
+\title{\includegraphics[height=1.5cm]{lille1.png}   \includegraphics[height=1.5cm]{fil.png}     \\\textbf{Software Project report}}
+\author{Mathieu Dietsch}
+\date{Licence informatique, S6 - Année 2008-2009}
+\maketitle
+
+\hbox{\raisebox{0.5cm}{\vrule depth 0pt height 0.5pt width \textwidth}}
+
+\tableofcontents
+
+% PARTIE 1 -------------------------------------
+
+\section{The project}
+
+The software project takes place in the 6th semester of the computer science studies in Lille1 University.\\
+The purpose of this project is to confront students with a real conception problem of a computer application so that they learn how to work in team and independently.\\
+
+This year the subject is the design of a little adventure video game. This game will run on a PC in command line which means there is no graphical interface, just a textual interface. All actions are executed through the keyboard.\\
+
+The language used to develop this application is Java for several reasons:
+\begin{itemize}
+\item This language is reliable and multiplatform (it can run on GNU/Linux or Ms Windows without code modification).
+\item Students know this language well since they studied it before.
+\item It is simple to develop in Java, focusing on the "object oriented conception" and not completely on the technical aspect of Java.
+\end{itemize}
+
+% PARTIE 2 -------------------------------------
+
+\section{Game specifications}
+
+The human player incarnates a virtual hero endowed with a number of energy points and strength after he has chosen a name.\\
+He is on a game map formed by a set of cells of different types of land: water, mountain, wood... Some fields can't be crossed over like mountains, others remove some energy from the character when he crosses them over.\\
+The hero can do some actions like moving, picking up an object and using it, having a rest or interacting with another character on the map. The hero is a character like the others; the only difference is that he is driven by a human player so he can do some actions a monster can't do (for example, look around him to view the type of cell and characters or items). A character is allowed to execute only one action per turn (except looking around, consulting inventory or consulting the hero's status).\\
+There are also enemies: the interaction with them is an attack during which the enemy loses a quantity of energy equal to the strength of the hero. But there are also healers: these characters can't do anything but if the hero interacts with one of them, he gains energy in exchange for money. To interact with a character, the hero must be on the same cell.\\
+When a character died, he leaves on the cell all the items he had in his bag. Others can pick up these items and use them later. Items can be gold or food. Gold (purse, treasure...) increases the amount money possessed by the character. Food (burger, potion...) increases the character's energy.\\
+
+% PARTIE 3 -------------------------------------
+
+\section{Constraints}
+
+In such a project, a major constraint exists: the code must be "open". Open means that the application can evolve without changing any part of the code, or just a little. This aspect is made possible thanks the programming paradigm "object oriented" used by Java. An entity is represented by an object so that by adding a class, the application can evolve without modifying any algorithm.\\
+For example, to add a new action "fly" for the hero, a new class (of Action type) named Fly will be added, but the mechanism of the game will remain unchanged (the mechanism used is the "dynamic load").\\
+To respect this rule, a real phase of conception is necessary and essential (this is represented by a UML scheme).\\
+
+Another constraint is the possibility to use XML files. XML is a format used to exchange data. Here, this could be useful to save a game in a file to continue later, be able to propose the game in different languages (French, English...) determined by the player or save and modify some settings of the game.\\
+
+Lastly, all the code produced must be documented by using the "javadoc": the documentation is added in the code (in comments) and HTML pages are generated afterwards. The documentation of the code is very important, particularly when somebody wants to use our code (to understand it). The language used to do that is the english.\\
+
+% PARTIE 4 -------------------------------------
+
+\section{Work}
+
+First, we worked on a conception phase. This phase was done during some practical work with other students and the teacher. We spoke both too in faculty, by phone or by internet (msn): sometimes we had long discussions.\\
+This conception enabled us to produce a UML scheme, a visual representation of all our classes (objects) and their dependencies.\\
+Then, we started to code the application in Java. The work was shared equally between: coding the game so that it could run (done by Mathieu) and integrating XML management (done by Emmanuel).\\
+
+No important difficulties were met during the conception and the development of the "basic" game (without XML management), possibly because the conception was not neglected.\\
+Some amelioration where done all along the project to have a better code, a better conception or new possibilities in the game.\\
+
+All the documentation of the code was done with the code: when a method is written, its documentation is written too.\\
+
+In the end, the projet is finished and runs well with all functionalities asked.
+
+\end{document}

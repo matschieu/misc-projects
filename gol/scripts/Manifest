@@ -1,0 +1,2 @@
+Main-Class: gol.GameOfLife
+Class-Path: lib/jdom.jar

@@ -1,0 +1,14 @@
+Fichiers ajoutés :
+ * src/game/items/Potions.java (implémentation changée car le fichier existait dans le premier rendu)
+ * src/game/characters/Thief.java
+ * src/game/actions/Steal.java
+ * src/game/actions/MakeWish.java
+ * src/game/map/Cell8.java
+ * src/game/map/Direction8.java
+ * src/game/map/GameMap8.java
+ 
+Fichiers modifiés :
+ * src/Run.java (pour lancer les 2 types de carte, GameMap4 par défaut)
+ * src/game/OnePlayerGame.java (pour lancer les 2 types de carte)
+ * src/game/characters/Hero.java (juste pour l'ordre d'affichage des actions, sinon sans la modification ça fonctionnerait)
+ * src/game/map/GameMap4.java (passage de private à protected pour certaines méthodes)

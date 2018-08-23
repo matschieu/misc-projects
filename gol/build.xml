@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+
+<project name="GameOfLife" default="run" basedir=".">
+
+	<property name="sources" value="src"/>
+	<property name="classes" value="classes"/>
+	<property name="img" value="img"/>
+	<property name="lib" value="lib"/>
+	<property name="config" value="config"/>
+	<property name="build" value="build"/>
+	<property name="jarname" value="gol.jar"/>
+	<property name="tarname" value="gol.tar"/>
+	<property name="jdom" value="lib/jdom.jar"/>
+	<property name="mainpath" value="gol"/>
+	<property name="mainclass" value="gol.GameOfLife"/>
+	<property name="doc" value="docs"/>
+
+	<target name="clean">
+		<delete dir="${classes}"/>
+		<delete dir="${doc}"/>
+		<delete file="${jarname}"/>
+	</target>
+
+	<target name="initialization">
+		<mkdir dir="${classes}"/>
+	</target>
+
+	<target name="compile" depends="clean, initialization">
+		<javac srcdir="${sources}" destdir="${classes}" classpath="${jdom}"/>
+	</target>
+
+	<target name="run" depends="compile">
+		<java classname="${mainclass}" classpath="${classes}:${jdom}" fork="true"/>
+	</target>
+
+	<target name="doc">
+		<mkdir dir="${doc}"/>
+		<javadoc encoding="ISO8859-1" sourcepath="${sources}" classpath="${jdom}" destdir="${doc}" author="true" packagenames="${mainpath}.*"/>
+	</target>
+		
+	<target name="build" depends="compile">
+		<jar jarfile="${jarname}" basedir="${classes}">
+			<manifest>
+				<attribute name="Main-Class" value="${mainclass}"/>
+				<attribute name="Class-Path" value="${jdom}"/>
+			</manifest>
+			<fileset dir=".">
+				<include name="${sources}/**"/>
+				<include name="${config}/**"/>
+				<include name="${img}/**"/>
+				<include name="${lib}/**"/>
+			</fileset>
+		</jar>
+	</target>
+	
+	<target name="tar">
+		<tar destfile="${tarname}">
+			<fileset dir="." />
+		</tar>
+	</target>
+	
+</project>
